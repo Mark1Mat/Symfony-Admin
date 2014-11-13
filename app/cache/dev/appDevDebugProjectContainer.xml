@@ -20,6 +20,7 @@
       <parameter key="SonataBlockBundle">Sonata\BlockBundle\SonataBlockBundle</parameter>
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
       <parameter key="SonataAdminBundle">Sonata\AdminBundle\SonataAdminBundle</parameter>
+      <parameter key="AdminAdminBundle">Admin\AdminBundle\AdminAdminBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -3638,6 +3639,10 @@
       <call method="addPath">
         <argument>/Users/Matisse/Documents/Site/Symfony/vendor/sonata-project/admin-bundle/Resources/views</argument>
         <argument>SonataAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/Matisse/Documents/Site/Symfony/src/Admin/AdminBundle/Resources/views</argument>
+        <argument>AdminAdmin</argument>
       </call>
       <call method="addPath">
         <argument>/Users/Matisse/Documents/Site/Symfony/src/Acme/DemoBundle/Resources/views</argument>

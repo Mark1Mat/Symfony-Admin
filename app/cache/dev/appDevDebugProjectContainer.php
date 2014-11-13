@@ -4362,6 +4362,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath('/Users/Matisse/Documents/Site/Symfony/vendor/sonata-project/core-bundle/Resources/views', 'SonataCore');
         $instance->addPath('/Users/Matisse/Documents/Site/Symfony/vendor/sonata-project/block-bundle/Resources/views', 'SonataBlock');
         $instance->addPath('/Users/Matisse/Documents/Site/Symfony/vendor/sonata-project/admin-bundle/Resources/views', 'SonataAdmin');
+        $instance->addPath('/Users/Matisse/Documents/Site/Symfony/src/Admin/AdminBundle/Resources/views', 'AdminAdmin');
         $instance->addPath('/Users/Matisse/Documents/Site/Symfony/src/Acme/DemoBundle/Resources/views', 'AcmeDemo');
         $instance->addPath('/Users/Matisse/Documents/Site/Symfony/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', 'WebProfiler');
         $instance->addPath('/Users/Matisse/Documents/Site/Symfony/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views', 'SensioDistribution');
@@ -4899,6 +4900,7 @@ class appDevDebugProjectContainer extends Container
                 'SonataBlockBundle' => 'Sonata\\BlockBundle\\SonataBlockBundle',
                 'KnpMenuBundle' => 'Knp\\Bundle\\MenuBundle\\KnpMenuBundle',
                 'SonataAdminBundle' => 'Sonata\\AdminBundle\\SonataAdminBundle',
+                'AdminAdminBundle' => 'Admin\\AdminBundle\\AdminAdminBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
