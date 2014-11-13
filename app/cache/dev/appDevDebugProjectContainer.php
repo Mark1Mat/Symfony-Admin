@@ -720,7 +720,7 @@ class appDevDebugProjectContainer extends Container
         $b = new \Doctrine\DBAL\Configuration();
         $b->setSQLLogger($a);
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => NULL, 'dbname' => 'symfony', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => 8889, 'dbname' => 'sona', 'user' => 'root', 'password' => 'root', 'charset' => 'UTF8', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
     }
 
     /**
@@ -742,20 +742,23 @@ class appDevDebugProjectContainer extends Container
         $c = new \Doctrine\Common\Cache\ArrayCache();
         $c->setNamespace('sf2orm_default_15b79064408dcca9b790468f333ec2e5c22c6ed9f08a9aeed3f54cf6828a6dad');
 
-        $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array());
-        $d->setMetadataCacheImpl($a);
-        $d->setQueryCacheImpl($b);
-        $d->setResultCacheImpl($c);
-        $d->setMetadataDriverImpl(new \Doctrine\ORM\Mapping\Driver\DriverChain());
-        $d->setProxyDir('/Users/Matisse/Documents/Site/Symfony/app/cache/dev/doctrine/orm/Proxies');
-        $d->setProxyNamespace('Proxies');
-        $d->setAutoGenerateProxyClasses(true);
-        $d->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $d->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $d->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+        $d = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $d->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($this->get('annotation_reader'), array(0 => '/Users/Matisse/Documents/Site/Symfony/src/Admin/AdminBundle/Entity')), 'Admin\\AdminBundle\\Entity');
 
-        $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.default_connection'), $d);
+        $e = new \Doctrine\ORM\Configuration();
+        $e->setEntityNamespaces(array('AdminAdminBundle' => 'Admin\\AdminBundle\\Entity'));
+        $e->setMetadataCacheImpl($a);
+        $e->setQueryCacheImpl($b);
+        $e->setResultCacheImpl($c);
+        $e->setMetadataDriverImpl($d);
+        $e->setProxyDir('/Users/Matisse/Documents/Site/Symfony/app/cache/dev/doctrine/orm/Proxies');
+        $e->setProxyNamespace('Proxies');
+        $e->setAutoGenerateProxyClasses(true);
+        $e->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $e->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $e->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+
+        $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create($this->get('doctrine.dbal.default_connection'), $e);
 
         $this->get('doctrine.orm.default_manager_configurator')->configure($instance);
 
@@ -4910,10 +4913,10 @@ class appDevDebugProjectContainer extends Container
             'kernel.container_class' => 'appDevDebugProjectContainer',
             'database_driver' => 'pdo_mysql',
             'database_host' => '127.0.0.1',
-            'database_port' => NULL,
-            'database_name' => 'symfony',
+            'database_port' => 8889,
+            'database_name' => 'sona',
             'database_user' => 'root',
-            'database_password' => NULL,
+            'database_password' => 'root',
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
